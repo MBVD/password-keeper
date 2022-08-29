@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8">
+        <title>Password Keeper</title>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class = "table">
+            <div>
+                <input type="text" placeholder="Сервис">
+                <input type="text" placeholder="Пароль">
+                <div id="input0"></div>
+            </div>
+            <div class="add" onclick="addInput()">Новый запрос</div>
+        </div>
+    </body>
+</html>
+<script>
+    var x = 0;
+function addInput() {
+    var str = '<input type="text" class="link" placeholder="Сервис "> <input type="text" class="amount" placeholder="Пароль"> <div id="input' + (x + 1) + '"></div>';
+    document.getElementById('input' + x).innerHTML = str;
+    x++;
+}
+</script>

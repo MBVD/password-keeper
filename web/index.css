@@ -1,0 +1,8 @@
+.add{
+    border: 10px, solid, black;
+    color: green;
+    margin-top: auto;
+}
+.table{
+    display: flex;
+}
