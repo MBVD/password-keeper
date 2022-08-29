@@ -6,20 +6,21 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        <div class = "table">
-            <div>
-                <input type="text" placeholder="Сервис">
-                <input type="text" placeholder="Пароль">
-                <div id="input0"></div>
+        <div class = "container">
+            <h1 style = "text-align: center;">PasswordKeeper</h1>
+            <div class = "table">
+                <div class = "requests">
+                    <div id="input0"></div>
+                </div>
+                <div class="add" onclick="addInput()">Новый запрос</div>
             </div>
-            <div class="add" onclick="addInput()">Новый запрос</div>
         </div>
     </body>
 </html>
 <script>
     var x = 0;
 function addInput() {
-    var str = '<input type="text" class="link" placeholder="Сервис "> <input type="text" class="amount" placeholder="Пароль"> <div id="input' + (x + 1) + '"></div>';
+    var str = '<div style = "display: flex; align-self: flex-start; height: 30px;"><input type="text" class="link" placeholder="Сервис "> <div style = "color: red; margin-top: auto; margin-left: 5px; display: none;">Ошибка</div><button id ="get' + (x + 1) +'">Копировать в буфер обмена</button></div> <div id="input' + (x + 1) + '"></div>';
     document.getElementById('input' + x).innerHTML = str;
     x++;
 }
