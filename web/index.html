@@ -51,9 +51,9 @@
             console.log(res)
         }
         async function save_key(){
-            let service = document.getElementById(input_save_service).value
-            let password = document.getElementById(input_save_password).value
-            let res = await eel.save_element(service, password).value
+            let service = document.getElementById('input_save_service').value
+            let password = document.getElementById('input_save_password').value
+            let res = await eel.save_element(service, password)
             console.log(res)
         }
     </script>
