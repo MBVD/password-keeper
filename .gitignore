@@ -1,2 +1,4 @@
 test.py
 base.csv
+.env
+logs

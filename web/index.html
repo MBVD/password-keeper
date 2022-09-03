@@ -4,24 +4,57 @@
         <meta content="text/html; charset=utf-8">
         <title>Password Keeper</title>
         <link rel="stylesheet" href="index.css">
+        <script type="text/javascript" src="/eel.js"></script>
     </head>
     <body>
         <div class = "container">
             <h1 style = "text-align: center;">PasswordKeeper</h1>
             <div class = "table">
-                <div class = "requests">
+                <div id = "requests">
+                    <div style = "display: flex; align-self: flex-start; height: 30px;">
+                        <input type="text" id ="input_0" class="link" placeholder="Сервис "> 
+                        <div id ="error_0"style = "color: red; margin-top: auto; margin-left: 5px; display: none;">
+                            Ошибка
+                        </div>
+                        <button id ="get_0" onclick = "get_key(0)">Копировать в буфер обмена</button>
+                    </div> 
                     <div id="input0"></div>
                 </div>
                 <div class="add" onclick="addInput()">Новый запрос</div>
             </div>
+            <div style = "margin-bottom: auto;">
+                <input id = 'input_save_service' placeholder="Введите сервис">
+                <input id = "input_save_password" placeholder="Введите ключ">
+                <button onclick="save_key()">Сохранить</button>
+            </div>
         </div>
     </body>
+    <script>
+        var x = 0;
+        function addInput() {
+            var str = '<div style = "display: flex; align-self: flex-start; height: 30px;"><input type="text" id ="input_' + (x+1) +'" class="link" placeholder="Сервис "> <div id ="error_' + (x+1) +'"style = "color: red; margin-top: auto; margin-left: 5px; display: none;">Ошибка</div><button id ="get_' + (x+1) +'" onclick = "get_key('+ (x+1) +')">Копировать в буфер обмена</button></div> <div id="input' + (x+1) + '"></div>';
+            document.getElementById('input' + x).innerHTML = str;
+            x++;
+        }
+    </script>
+    
+    <script>
+        async function get_key(id){
+            console.log(id)
+            let service = document.getElementById('input_' + id).value
+            console.log(service)
+            let res = await eel.get_element(service).value
+            if (res == null){
+                document.getElementById('error_' + id)
+                document.style="display: flex;"
+            }
+            console.log(res)
+        }
+        async function save_key(){
+            let service = document.getElementById(input_save_service).value
+            let password = document.getElementById(input_save_password).value
+            let res = await eel.save_element(service, password).value
+            console.log(res)
+        }
+    </script>
 </html>
-<script>
-    var x = 0;
-function addInput() {
-    var str = '<div style = "display: flex; align-self: flex-start; height: 30px;"><input type="text" class="link" placeholder="Сервис "> <div style = "color: red; margin-top: auto; margin-left: 5px; display: none;">Ошибка</div><button id ="get' + (x + 1) +'">Копировать в буфер обмена</button></div> <div id="input' + (x + 1) + '"></div>';
-    document.getElementById('input' + x).innerHTML = str;
-    x++;
-}
-</script>
