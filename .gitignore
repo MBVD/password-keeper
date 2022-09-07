@@ -2,3 +2,6 @@ test.py
 base.csv
 .env
 logs
+build
+dist
+main.spec
