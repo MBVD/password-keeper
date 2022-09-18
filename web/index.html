@@ -22,10 +22,14 @@
                 </div>
                 <div class="add" onclick="addInput()">Новый запрос</div>
             </div>
-            <div style = "margin-bottom: auto;">
+            <div style = "margin-bottom: auto; display: flex;">
                 <input id = 'input_save_service' placeholder="Введите сервис">
                 <input id = "input_save_password" placeholder="Введите ключ">
                 <button onclick="save_key()">Сохранить</button>
+            </div>
+            <div style="margin-bottom: auto; display: flex;">
+                <input id = "delete_service", placeholder="Введите сервис">
+                <button onclick="delete_service()">Удалить</button>
             </div>
         </div>
     </body>
@@ -55,6 +59,10 @@
             let password = document.getElementById('input_save_password').value
             let res = await eel.save_element(service, password)
             console.log(res)
+        }
+        async function delete_service(){
+            let service = document.getElementById('delete_service').value
+            let res = await eel.delete_element(service)
         }
     </script>
 </html>
