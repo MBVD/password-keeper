@@ -29,12 +29,12 @@ def get_element(name):
 def save_element(name, key):
     d_frame = pd.read_csv(cfg.CSV_FILE)
     element, key1 = get_element(name)
-    if element:
-        return False
-    d_frame.loc[len(d_frame), d_frame.columns] = name, key, 0
-    d_frame.to_csv(cfg.CSV_FILE, index=False)
-    logger.info("Успешно сохранили Сервис: {name}".format(name=name))
-    return True
+    if element is None:
+        d_frame.loc[len(d_frame), d_frame.columns] = name, key, 0
+        d_frame.to_csv(cfg.CSV_FILE, index=False)
+        logger.info("Успешно сохранили Сервис: {name}".format(name=name))
+        return True
+    return False
 
 
 @eel.expose
